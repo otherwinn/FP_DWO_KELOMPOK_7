@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<Schema name="dwaw">
+<Cube name="penawaran" defaultMeasure="Amount">
+  
+  <Table name="fakta_penawaran"/>
+
+    
+  <Dimension name="Customer" foreignKey ="customer_id">
+      <Hierarchy hasAll="true" allMemberName="All Customer" primaryKey ="customer_id">
+      <Table name="customer"/>
+      <Level name="Customer" column="customer_name"/>
+      </Hierarchy>
+      
+  </Dimension>
+
+ 
+  <Dimension name="Time" foreignKey="time_id">
+    <Hierarchy hasAll="true" allMemberName="All Times" primaryKey="time_id">
+      <Table name="time" />
+      <Level name="Year" column="tahun" type="Numeric" uniqueMembers="true"
+          levelType="TimeYears"/>
+      <Level name="Month" column="bulan" uniqueMembers="false" type="Numeric"
+          levelType="TimeMonths"/>
+      <Level name="Date" column="tanggal" uniqueMembers="false" type="Numeric"
+          levelType="TimeDays"/>
+    </Hierarchy>
+   
+  </Dimension>
+
+  <Dimension name="Store" foreignKey = "store_id">
+    <Hierarchy hasAll="true" allMemberName="All Store" primaryKey ="store_id">
+      <Table name="store" />
+      <Level name="Store" column="store_name"/>
+    </Hierarchy>
+  </Dimension>
+
+  <Dimension name="Product" foreignKey="product_id">
+    <Hierarchy  hasAll  ="true" allMemberName="All Product" primaryKey  = "product_id">
+        <Table name="product"/>
+        <Level name="Product" column="product_name"/>
+    </Hierarchy>
+  </Dimension>
+
+  <Dimension name="Special Offer" foreignKey="special_offerID">
+    <Hierarchy  hasAll  ="true" allMemberName="All Special Offer" primaryKey  = "special_offerID">
+        <Table name="special_offer"/>
+        <Level name="Kategori" column="kategori"/>
+        <Level name="Tipe Diskon" column="tipe_diskon"/>
+        <Level name="Nama Diskon" column="nama_diskon"/>
+    </Hierarchy>
+  </Dimension>
+    
+  <Measure name="discount_pct" column="discount_pct" aggregator="avg"
+      formatString="0.00%"/>   
+  <Measure name="duration_offer" column="duration_offer" aggregator="avg"
+      formatString="Standard"/> 
+  
+</Cube>
+</Schema>

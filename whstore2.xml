@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<Schema name="dwaw2">
+<Cube name="pengiriman" defaultMeasure="Amount">
+
+  <Table name="fact_shipping"/>
+
+    
+  <Dimension name="Customer" foreignKey ="customer_id">
+      <Hierarchy hasAll="true" allMemberName="All Customer" primaryKey ="customer_id">
+      <Table name="customer"/>
+      <Level name="Customer" column="customer_name"/>
+      </Hierarchy>  
+  </Dimension>
+
+  <Dimension name="Address" foreignKey = "address_id">
+    <Hierarchy hasAll="true" allMemberName="All Address" primaryKey ="address_id">
+      <Table name="address" />
+      <Level name="Country Region" column="country_region"/>
+      <Level name="City" column="city"/>
+    </Hierarchy>
+  </Dimension>
+
+  <Dimension name="Product" foreignKey="product_id">
+    <Hierarchy  hasAll  ="true" allMemberName="All Product" primaryKey  = "product_id">
+        <Table name="product"/>
+        <Level name="Product" column="product_name"/>
+    </Hierarchy>
+  </Dimension>
+
+  <Dimension name="Shipping Method" foreignKey="shipping_method_id">
+    <Hierarchy  hasAll  ="true" allMemberName="All Shipping Method" primaryKey  = "shipping_method_id">
+        <Table name="shipping_method"/>
+        <Level name="Shipping Method Name" column="shipping_method_name"/>
+    </Hierarchy>
+  </Dimension>
+
+  <Dimension name="Time" foreignKey="time_id">
+    <Hierarchy hasAll="true" allMemberName="All Times" primaryKey="time_id">
+      <Table name="time" />
+      <Level name="Year" column="tahun" type="Numeric" uniqueMembers="true"
+          levelType="TimeYears"/>
+      <Level name="Month" column="bulan" uniqueMembers="false" type="Numeric"
+          levelType="TimeMonths"/>
+      <Level name="Date" column="tanggal" uniqueMembers="false" type="Numeric"
+          levelType="TimeDays"/>
+    </Hierarchy>
+   
+  </Dimension>
+    
+  <Measure name="ship_base" column="ship_base" aggregator="avg"
+      formatString="0.000"/>   
+  <Measure name="ship_rate" column="ship_rate" aggregator="avg"
+      formatString="0.000"/> 
+  <Measure name="Freight" column="freight" aggregator="avg"
+      formatString="0.000"/> 
+  <Measure name="TaxAmt" column="taxAmt" aggregator="avg"
+      formatString="0.000"/> 
+  <Measure name="Total Ship Cost" column="totalShip_cost" aggregator="avg"
+      formatString="0.000"/>    
+  
+</Cube>
+</Schema>
