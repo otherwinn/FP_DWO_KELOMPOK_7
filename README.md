@@ -8,9 +8,14 @@ Nama Kelompok :
 Instruksi cara menginstal dan menjalankan aplikasi :
 1. Install XAMPP terlebih dahulu apabila belum memiliki
 2. Extract FP_DWO_KELOMPOK_7.zip pada folder htdocs didalam folder XAMPP
-3. Jalankan Xampp control panel.
+3. Jalankan XAMPP control panel.
 4. Start apache dan mysql server.
 5. Buka phpMyAdmin (localhost/phpmyadmin).
 6. Buat database dengan nama whstore.
 7. Import file whstore.sql ke dalam database whstore.
-8. Masukkan File index.html, testpage.jsp, dan index.jsp ke dalam file mondrian di 
+8. Download file mondrian.war di https://drive.google.com/file/d/1-VtCwApuq1Gc0NDGplfLw2Sa6jrDvIkh/view?usp=sharing
+9. Taruh file mondrian.war di xampp\tomcat\webapps dan setelah itu nyalakan XAMPP control panel -> start tomcat -> secara otomatis akan membentuk folder mondrian
+10. Masukkan file index.html, testpage.jsp, dan index.jsp ke dalam file mondrian di xampp\tomcat\webapps\mondrian dan pilih replace file agar file nya terganti dengan yang ini
+11. Masukkan driver connector com.mysql.jdbc.Driver.jar di xampp\tomcat\webapps\mondrian\WEB-INF\lib
+12. Masukkan file whstore xml dan jsp, whstore2 xml dan jsp ke dalam xampp\tomcat\webapps\mondrian\WEB-INF\queries
+13. 
